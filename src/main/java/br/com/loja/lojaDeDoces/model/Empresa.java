@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.math.BigDecimal;
+
 @Getter
 @Setter
 @Entity
@@ -21,5 +22,6 @@ public class Empresa {
     private BigDecimal pagamento;
     @Column(nullable = false, length = 25)
     private String produto;
+    @Column(nullable = false)
     private String vendas;
 }

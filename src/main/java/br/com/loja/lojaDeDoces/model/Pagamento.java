@@ -1,7 +1,6 @@
 package br.com.loja.lojaDeDoces.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,5 +10,8 @@ import lombok.Setter;
 @Table(name = "tb_pagamento")
 public class Pagamento {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
 }
