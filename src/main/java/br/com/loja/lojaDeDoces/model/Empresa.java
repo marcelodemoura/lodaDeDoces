@@ -1,9 +1,12 @@
 package br.com.loja.lojaDeDoces.model;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.math.BigDecimal;
-
+@Getter
+@Setter
 @Entity
 @Table(name = "tb_empresa")
 public class Empresa {

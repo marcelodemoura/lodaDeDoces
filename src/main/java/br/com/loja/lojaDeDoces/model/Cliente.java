@@ -2,10 +2,13 @@ package br.com.loja.lojaDeDoces.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.validator.constraints.br.CPF;
 
 import java.io.Serializable;
-
+@Getter
+@Setter
 @Entity
 @Table(name = "tb_cliente")
 public class Cliente {
