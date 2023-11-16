@@ -5,6 +5,8 @@ import jakarta.validation.constraints.Email;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.validator.constraints.br.CPF;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.io.Serializable;
 @Getter
@@ -12,7 +14,6 @@ import java.io.Serializable;
 @Entity
 @Table(name = "tb_cliente")
 public class Cliente {
-
 
 
     @Id
