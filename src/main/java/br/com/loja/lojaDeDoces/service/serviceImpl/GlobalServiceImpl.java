@@ -25,11 +25,6 @@ public class GlobalServiceImpl implements GlobalService {
         return null;
     }
 
-//    @Override
-//    public Cliente findAll() {
-//        return (Cliente) globalRepository.findAll();
-//    }
-
     @Override
     public void delete(Cliente cliente) {
         globalRepository.delete(cliente);

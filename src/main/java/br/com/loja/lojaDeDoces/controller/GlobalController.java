@@ -1,7 +1,9 @@
 package br.com.loja.lojaDeDoces.controller;
 
 import br.com.loja.lojaDeDoces.dto.ClienteDTO;
+import br.com.loja.lojaDeDoces.dto.EmpresaDTO;
 import br.com.loja.lojaDeDoces.model.Cliente;
+import br.com.loja.lojaDeDoces.model.Empresa;
 import br.com.loja.lojaDeDoces.service.GlobalService;
 import jakarta.validation.Valid;
 import org.springframework.beans.BeanUtils;
