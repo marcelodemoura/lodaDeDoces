@@ -22,9 +22,10 @@ public class GlobalController {
     }
 
     @PostMapping
-    public ResponseEntity<Object>save(@RequestBody @Valid ClienteDTO clienteDTO){
+    public ResponseEntity<Object> save(@RequestBody @Valid ClienteDTO clienteDTO) {
         var cliente = new Cliente();
-        BeanUtils.copyProperties(clienteDTO,cliente);
+        BeanUtils.copyProperties(clienteDTO, cliente);
+        cliente.setDatacadastro(cliente.getDatacadastro());
         return ResponseEntity.status(HttpStatus.CREATED).body(globalService.save(cliente));
     }
     @GetMapping("/{id}")
@@ -32,11 +33,20 @@ public class GlobalController {
         var cliente = globalService.findById(id);
         return ResponseEntity.ok(cliente);
     }
-//    @GetMapping("/{id/list}")
-//    ResponseEntity<Cliente> findAll(@PathVariable Long id) {
-//        var cliente = globalService.findAll;
-//        return ResponseEntity.ok(cliente);
-//    }
-
-
+    @PutMapping("/{id}")
+    ResponseEntity<Object> update(@PathVariable(value = "id") Long id,
+                                  @RequestBody @Valid ClienteDTO clienteDTO) {
+        Optional<Cliente> clienteOptional = globalService.findById(id);
+        var cliente = new Cliente();
+        BeanUtils.copyProperties(clienteDTO, cliente);
+        cliente.setId(clienteOptional.get().getId());
+        cliente.setDataAtualizacao(clienteOptional.get().getDataAtualizacao());
+        return ResponseEntity.status(HttpStatus.OK).body(globalService.save(cliente));
+    }
+    @DeleteMapping("/{id}")
+    ResponseEntity<Object> delete(@PathVariable(value = "id") Long id) {
+        Optional<Cliente> clienteOptional = globalService.findById(id);
+        globalService.delete(clienteOptional.get());
+        return ResponseEntity.status(HttpStatus.OK).body("Successfully");
+    }
 }

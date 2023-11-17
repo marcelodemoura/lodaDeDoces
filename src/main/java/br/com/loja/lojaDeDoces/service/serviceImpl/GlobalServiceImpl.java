@@ -15,15 +15,24 @@ public class GlobalServiceImpl implements GlobalService {
         this.globalRepository = globalRepository;
     }
 
-
     @Override
     public Optional<Cliente> findById(Long id) {
         return globalRepository.findById(id);
     }
 
     @Override
-    public Cliente findAll(Cliente cliente) {
+    public Cliente findAll() {
         return null;
+    }
+
+//    @Override
+//    public Cliente findAll() {
+//        return (Cliente) globalRepository.findAll();
+//    }
+
+    @Override
+    public void delete(Cliente cliente) {
+        globalRepository.delete(cliente);
     }
 
     @Override
