@@ -1,10 +1,8 @@
 package br.com.loja.lojaDeDoces.controller;
 
 import br.com.loja.lojaDeDoces.dto.ClienteDTO;
-import br.com.loja.lojaDeDoces.dto.EmpresaDTO;
 import br.com.loja.lojaDeDoces.model.Cliente;
-import br.com.loja.lojaDeDoces.model.Empresa;
-import br.com.loja.lojaDeDoces.service.GlobalService;
+import br.com.loja.lojaDeDoces.service.ClienteService;
 import jakarta.validation.Valid;
 import org.springframework.beans.BeanUtils;
 import org.springframework.http.HttpStatus;
@@ -15,11 +13,11 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/loja")
-public class GlobalController {
+public class ClienteController {
 
-    private final GlobalService globalService;
+    private final ClienteService globalService;
 
-    public GlobalController(GlobalService globalService) {
+    public ClienteController(ClienteService globalService) {
         this.globalService = globalService;
     }
 

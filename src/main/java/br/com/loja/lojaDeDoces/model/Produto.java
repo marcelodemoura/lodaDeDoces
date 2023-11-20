@@ -13,9 +13,11 @@ public class Produto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false,length = 20)
-    private String nome;
-    @Column(nullable = false,length = 50)
+    @Column(nullable = false,length = 20,unique = true)
     private String descricao;
+    @Column(nullable = false,length = 50)
+    private String vUnit;
+    @Column(nullable = false,length = 50)
+    private String qtdeEstoque;
 
 }
