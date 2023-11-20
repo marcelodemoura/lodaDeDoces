@@ -13,11 +13,11 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/loja")
-public class ClienteController {
+public class Client {
 
     private final ClienteService globalService;
 
-    public ClienteController(ClienteService globalService) {
+    public Client(ClienteService globalService) {
         this.globalService = globalService;
     }
 
