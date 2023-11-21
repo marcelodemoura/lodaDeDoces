@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Optional;
 @RestController
 @RequestMapping("/vendas")
@@ -25,7 +27,7 @@ public class Sales {
     public ResponseEntity<Object> save(@RequestBody @Valid VendasDTO vendasDTO) {
         var vendas = new Vendas();
         BeanUtils.copyProperties(vendasDTO, vendas);
-        vendas.setDatacadastro(vendas.getDatacadastro());
+        vendas.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
         return ResponseEntity.status(HttpStatus.CREATED).body(vendasService.save(vendas));
     }
 
@@ -42,7 +44,7 @@ public class Sales {
         var vendas = new Vendas();
         BeanUtils.copyProperties(vendasDTO, vendas);
         vendas.setId(vendasOptional.get().getId());
-        vendas.setDataAtualizacao(vendasOptional.get().getDataAtualizacao());
+        vendas.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
         return ResponseEntity.status(HttpStatus.OK).body(vendasService.save(vendas));
     }
 

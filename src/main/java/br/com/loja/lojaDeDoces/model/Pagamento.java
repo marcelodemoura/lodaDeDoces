@@ -18,9 +18,7 @@ public class Pagamento {
     private Long id;
     @Column(name = "Descricao",unique = true, length = 50 )
     private String descricao;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/mm/yyyy@HH:mm:ss")
-    LocalDateTime datacadastro;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/mm/yyyy@HH:mm:ss")
-    LocalDateTime dataAtualizacao;
+    @Column(nullable = false)
+    private LocalDateTime registrationDate;
 
 }

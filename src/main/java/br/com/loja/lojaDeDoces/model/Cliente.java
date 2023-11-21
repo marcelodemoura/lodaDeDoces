@@ -29,10 +29,8 @@ public class Cliente {
     private String email;
     @Column(nullable = false, unique = true, length = 11)
     private String telefone;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/mm/yyyy@HH:mm:ss")
-    LocalDateTime datacadastro;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/mm/yyyy@HH:mm:ss")
-    LocalDateTime dataAtualizacao;
+    @Column(nullable = false)
+    private LocalDateTime registrationDate;
 
 
 }

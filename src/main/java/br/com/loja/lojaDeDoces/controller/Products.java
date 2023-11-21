@@ -9,9 +9,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Optional;
 @RestController
-@RequestMapping("/produtos")
+@RequestMapping("/products")
 public class Products {
 
     private final ProdutoService produtoService;
@@ -25,7 +27,7 @@ public class Products {
     public ResponseEntity<Object> save(@RequestBody @Valid ProdutoDTO produtoDTO) {
         var produto = new Produto();
         BeanUtils.copyProperties(produtoDTO, produto);
-        produto.setDatacadastro(produto.getDatacadastro());
+        produto.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
         return ResponseEntity.status(HttpStatus.CREATED).body(produtoService.save(produto));
     }
 
@@ -42,7 +44,7 @@ public class Products {
         var produto = new Produto();
         BeanUtils.copyProperties(produtoDTO, produto);
         produto.setId(produtoOptional.get().getId());
-        produto.setDataAtualizacao(produtoOptional.get().getDataAtualizacao());
+        produto.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
         return ResponseEntity.status(HttpStatus.OK).body(produtoService.save(produto));
     }
 

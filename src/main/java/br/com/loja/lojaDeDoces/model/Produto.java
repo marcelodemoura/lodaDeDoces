@@ -22,9 +22,7 @@ public class Produto {
     private String vUnit;
     @Column(nullable = false,length = 50)
     private int qtdeEstoque;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/mm/yyyy@HH:mm:ss")
-    LocalDateTime datacadastro;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/mm/yyyy@HH:mm:ss")
-    LocalDateTime dataAtualizacao;
+    @Column(nullable = false)
+    private LocalDateTime registrationDate;
 
 }

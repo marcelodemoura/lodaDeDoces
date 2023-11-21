@@ -4,15 +4,18 @@ import br.com.loja.lojaDeDoces.dto.ClienteDTO;
 import br.com.loja.lojaDeDoces.model.Cliente;
 import br.com.loja.lojaDeDoces.service.ClienteService;
 import jakarta.validation.Valid;
+import lombok.Data;
 import org.springframework.beans.BeanUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/loja")
+@RequestMapping("/client")
 public class Client {
 
     private final ClienteService globalService;
@@ -25,7 +28,7 @@ public class Client {
     public ResponseEntity<Object> save(@RequestBody @Valid ClienteDTO clienteDTO) {
         var cliente = new Cliente();
         BeanUtils.copyProperties(clienteDTO, cliente);
-        cliente.setDatacadastro(cliente.getDatacadastro());
+        cliente.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
         return ResponseEntity.status(HttpStatus.CREATED).body(globalService.save(cliente));
     }
     @GetMapping("/{id}")
@@ -39,8 +42,8 @@ public class Client {
         Optional<Cliente> clienteOptional = globalService.findById(id);
         var cliente = new Cliente();
         BeanUtils.copyProperties(clienteDTO, cliente);
+        cliente.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
         cliente.setId(clienteOptional.get().getId());
-        cliente.setDataAtualizacao(clienteOptional.get().getDataAtualizacao());
         return ResponseEntity.status(HttpStatus.OK).body(globalService.save(cliente));
     }
     @DeleteMapping("/{id}")

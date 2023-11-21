@@ -22,9 +22,6 @@ public class Empresa {
     private String nome;
     @Column(nullable = false, length = 1)
     private boolean ative = true;
-
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/mm/yyyy@HH:mm:ss")
-    LocalDateTime datacadastro;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/mm/yyyy@HH:mm:ss")
-    LocalDateTime dataAtualizacao;
+    @Column(nullable = false)
+    private LocalDateTime registrationDate;
 }

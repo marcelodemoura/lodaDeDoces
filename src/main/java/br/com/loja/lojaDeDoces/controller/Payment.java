@@ -10,6 +10,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Optional;
 @RestController
 @RequestMapping("/pagamento")
@@ -26,7 +28,7 @@ public class Payment {
     public ResponseEntity<Object> save(@RequestBody @Valid PagamentoDTO pagamentoDTO) {
         var pagamento = new Pagamento();
         BeanUtils.copyProperties(pagamentoDTO, pagamento);
-        pagamento.setDatacadastro(pagamento.getDatacadastro());
+        pagamento.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
         return ResponseEntity.status(HttpStatus.CREATED).body(pagamanentoService.save(pagamento));
     }
 
@@ -43,7 +45,7 @@ public class Payment {
         var pagamento = new Pagamento();
         BeanUtils.copyProperties(pagamentoDTO, pagamento);
         pagamento.setId(pagamentoOptional.get().getId());
-        pagamento.setDataAtualizacao(pagamentoOptional.get().getDataAtualizacao());
+        pagamento.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
         return ResponseEntity.status(HttpStatus.OK).body(pagamanentoService.save(pagamento));
     }
 
