@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 @Getter
 @Setter
 public class EmpresaDTO {
-        private Long id;
+    private Long id;
     private String nome;
     private BigDecimal pagamento;
     private String produto;

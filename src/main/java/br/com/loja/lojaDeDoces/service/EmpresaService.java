@@ -1,7 +1,7 @@
 package br.com.loja.lojaDeDoces.service;
 
-import br.com.loja.lojaDeDoces.model.Cliente;
 import br.com.loja.lojaDeDoces.model.Empresa;
+import br.com.loja.lojaDeDoces.model.Pagamento;
 
 import java.util.Optional;
 
