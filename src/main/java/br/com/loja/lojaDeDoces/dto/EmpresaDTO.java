@@ -11,9 +11,8 @@ import java.math.BigDecimal;
 public class EmpresaDTO {
     private Long id;
     private String nome;
-    private BigDecimal pagamento;
-    private String produto;
-    private String vendas;
+    private Boolean status = true;
+
 
 
 }

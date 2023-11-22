@@ -18,7 +18,7 @@ public class Empresa {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, length = 40)
+    @Column(nullable = false, length = 40,unique = true)
     private String nome;
     @Column(nullable = false, length = 1)
     private boolean ative = true;
