@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.util.List;
 import java.util.Optional;
 @RestController
 @RequestMapping("/vendas")
@@ -37,6 +38,11 @@ public class Sales {
         return ResponseEntity.ok(vendas);
     }
 
+    @GetMapping("/nome/{nome}")
+    ResponseEntity<List<Vendas>> findByNome(@PathVariable String nome) {
+        var vendas = vendasService.findAllByCliente(nome);
+        return ResponseEntity.ok(vendas);
+        }
     @PutMapping("/{id}")
     ResponseEntity<Object> update(@PathVariable(value = "id") Long id,
                                   @RequestBody @Valid VendasDTO vendasDTO) {

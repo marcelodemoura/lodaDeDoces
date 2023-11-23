@@ -5,6 +5,7 @@ import br.com.loja.lojaDeDoces.repository.VendasRepository;
 import br.com.loja.lojaDeDoces.service.VendasService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -20,22 +21,19 @@ public class VendasServiceImpl implements VendasService {
     public Object save(Vendas vendas) {
         return vendasRepository.save(vendas);
     }
-
     @Override
     public Optional<Vendas> findById(Long id) {
         return vendasRepository.findById(id);
-
     }
 
-//        @Override
-//    public Vendas findAll() {
-//        return null;
-//    }
     @Override
     public void delete(Vendas vendas) {
         vendasRepository.delete(vendas);
-
     }
 
+    @Override
+    public List<Vendas> findAllByCliente(String nome) {
+        return vendasRepository.findAllByCliente(nome);
+    }
 
 }
