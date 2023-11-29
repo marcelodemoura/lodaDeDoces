@@ -28,7 +28,7 @@ public class Client {
     public ResponseEntity<Object> save(@RequestBody @Valid ClienteDTO clienteDTO) {
         var cliente = new Cliente();
         BeanUtils.copyProperties(clienteDTO, cliente);
-        cliente.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
+//        cliente.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
         return ResponseEntity.status(HttpStatus.CREATED).body(globalService.save(cliente));
     }
     @GetMapping("/{id}")
@@ -42,7 +42,7 @@ public class Client {
         Optional<Cliente> clienteOptional = globalService.findById(id);
         var cliente = new Cliente();
         BeanUtils.copyProperties(clienteDTO, cliente);
-        cliente.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
+//        cliente.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
         cliente.setId(clienteOptional.get().getId());
         return ResponseEntity.status(HttpStatus.OK).body(globalService.save(cliente));
     }

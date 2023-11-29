@@ -35,5 +35,4 @@ public class VendasServiceImpl implements VendasService {
     public List<Vendas> findAllByCliente(String nome) {
         return vendasRepository.findAllByCliente(nome);
     }
-
 }

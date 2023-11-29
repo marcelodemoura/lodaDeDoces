@@ -14,4 +14,5 @@ public interface VendasService {
     void delete(Vendas vendas);
 
     List findAllByCliente(String nome);
+
 }

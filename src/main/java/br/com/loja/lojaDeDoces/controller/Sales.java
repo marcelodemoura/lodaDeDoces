@@ -9,12 +9,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
-import java.time.ZoneId;
 import java.util.List;
 import java.util.Optional;
+
 @RestController
-@RequestMapping("/vendas")
+@RequestMapping("/tb_vendas")
 public class Sales {
 
     private final VendasService vendasService;
@@ -28,7 +27,7 @@ public class Sales {
     public ResponseEntity<Object> save(@RequestBody @Valid VendasDTO vendasDTO) {
         var vendas = new Vendas();
         BeanUtils.copyProperties(vendasDTO, vendas);
-        vendas.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
+//        vendas.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
         return ResponseEntity.status(HttpStatus.CREATED).body(vendasService.save(vendas));
     }
 
@@ -42,7 +41,8 @@ public class Sales {
     ResponseEntity<List<Vendas>> findByNome(@PathVariable String nome) {
         var vendas = vendasService.findAllByCliente(nome);
         return ResponseEntity.ok(vendas);
-        }
+    }
+
     @PutMapping("/{id}")
     ResponseEntity<Object> update(@PathVariable(value = "id") Long id,
                                   @RequestBody @Valid VendasDTO vendasDTO) {
@@ -50,7 +50,7 @@ public class Sales {
         var vendas = new Vendas();
         BeanUtils.copyProperties(vendasDTO, vendas);
         vendas.setId(vendasOptional.get().getId());
-        vendas.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
+//        vendas.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
         return ResponseEntity.status(HttpStatus.OK).body(vendasService.save(vendas));
     }
 
@@ -60,5 +60,4 @@ public class Sales {
         vendasService.delete(vendasOptional.get());
         return ResponseEntity.status(HttpStatus.OK).body("Successfully");
     }
-
 }

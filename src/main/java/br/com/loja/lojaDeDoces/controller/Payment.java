@@ -28,7 +28,7 @@ public class Payment {
     public ResponseEntity<Object> save(@RequestBody @Valid PagamentoDTO pagamentoDTO) {
         var pagamento = new Pagamento();
         BeanUtils.copyProperties(pagamentoDTO, pagamento);
-        pagamento.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
+//        pagamento.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
         return ResponseEntity.status(HttpStatus.CREATED).body(pagamanentoService.save(pagamento));
     }
 
@@ -45,7 +45,7 @@ public class Payment {
         var pagamento = new Pagamento();
         BeanUtils.copyProperties(pagamentoDTO, pagamento);
         pagamento.setId(pagamentoOptional.get().getId());
-        pagamento.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
+//        pagamento.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
         return ResponseEntity.status(HttpStatus.OK).body(pagamanentoService.save(pagamento));
     }
 

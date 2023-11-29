@@ -28,7 +28,7 @@ public class Company {
     public ResponseEntity<Object> save(@RequestBody @Valid EmpresaDTO empresaDTO) {
         var empresa = new Empresa();
         BeanUtils.copyProperties(empresaDTO, empresa);
-        empresa.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
+//        empresa.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
         return ResponseEntity.status(HttpStatus.CREATED).body(empresaService.save(empresa));
     }
 
@@ -45,7 +45,7 @@ public class Company {
         var empresa = new Empresa();
         BeanUtils.copyProperties(empresaDTO, empresa);
         empresa.setId(empresaOptional.get().getId());
-        empresa.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
+//        empresa.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
         return ResponseEntity.status(HttpStatus.OK).body(empresaService.save(empresa));
     }
 
